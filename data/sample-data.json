@@ -1,0 +1,18 @@
+[
+    {
+        "id": "1",
+        "type": "earthquake",
+        "location": "Japan",
+        "date": "2024-09-01",
+        "magnitude": "7.5",
+        "description": "A major earthquake struck Japan."
+    },
+    {
+        "id": "2",
+        "type": "flood",
+        "location": "India",
+        "date": "2024-08-30",
+        "severity": "Severe",
+        "description": "Severe flooding in several regions of India."
+    }
+]

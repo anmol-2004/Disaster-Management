@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Manager</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- Notification Bar -->
+    <div class="notification-bar scroll-right">
+        <span>New Articles</span>
+        <marquee behavior="" direction="left">Saving Lives & Beyond “आपदा सेवा सदैव सर्वत्र”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NDRF Helpline Number : +91-9711077372&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Saving Lives & Beyond “आपदा सेवा सदैव सर्वत्र”</marquee>
+     </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Disaster Manager</h1>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="#">Guidelines</a></li>
+                    <li><a href="/feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="guidelines">
+            <h1>Disaster Guidelines</h1>
+            <div class="card-container">
+                <div class="card" onclick="openModal('earthquakeModal')">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.zhAf4hyiArofFbvtyEXdUQAAAA&pid=Api&P=0&h=180" alt="Earthquake">
+                    <h2>Earthquakes</h2>
+                    <p>Learn how to prepare for, respond to, and recover from earthquakes with our comprehensive guidelines.</p>
+                    <button class="btn">Know More</button>
+                </div>
+                <div class="card" onclick="openModal('floodModal')">
+                    <img src="https://www.aljazeera.com/wp-content/uploads/2022/03/AP22059261560562.jpg?resize=1920%2C1440" alt="Flood">
+                    <h2>Floods</h2>
+                    <p>Get essential tips and steps to handle floods effectively and ensure your safety during and after an event.</p>
+                    <button class="btn">Know More</button>
+                </div>
+                <div class="card" onclick="openModal('hurricaneModal')">
+                    <img src="https://media.npr.org/assets/img/2019/09/01/gettyimages-1165402826-d481aa6df2cc01d4e59f79f87fc01bc9c1156b58.jpg" alt="Hurricane">
+                    <h2>Hurricanes</h2>
+                    <p>Understand the critical measures to take before, during, and after a hurricane to stay safe and informed.</p>
+                    <button class="btn">Know More</button>
+                </div>
+                <div class="card" onclick="openModal('tornadoModal')">
+                    <img src="https://www.inquirer.com/resizer/36iHVzIfZvN9d6f8LaimwVDXBbA=/1400x932/smart/cloudfront-us-east-1.images.arcpublishing.com/pmn/FQ7PSG2YV5A2JK27U2ZAKILZXA.jpg" alt="Tornado">
+                    <h2>Tornadoes</h2>
+                    <p>Find out how to prepare for and react to tornadoes to protect yourself and your loved ones effectively.</p>
+                    <button class="btn">Know More</button>
+                </div>
+                <div class="card" onclick="openModal('wildfireModal')">
+                    <img src="https://s.hdnux.com/photos/75/41/60/16129074/13/rawImage.jpg" alt="Wildfire">
+                    <h2>Wildfires</h2>
+                    <p>Learn essential safety measures to take before, during, and after a wildfire to protect yourself and your property.</p>
+                    <button class="btn">Know More</button>
+                </div>
+                <div class="card" onclick="openModal('tsunamiModal')">
+                    <img src="http://d.ibtimes.co.uk/en/full/1496942/japan-tsunami.jpg" alt="Tsunami">
+                    <h2>Tsunamis</h2>
+                    <p>Get crucial information on how to prepare for and respond to tsunamis to ensure your safety and survival.</p>
+                    <button class="btn">Know More</button>
+                </div>
+                <div class="card" onclick="openModal('volcanoModal')">
+                    <img src="https://imagenes-bonitas.com/wp-content/uploads/2018/08/im%C3%A1genes-de-volc%C3%A1n-en-erupcion.jpg" alt="Volcanic Eruption">
+                    <h2>Volcanic Eruptions</h2>
+                    <p>Understand the key actions to take before, during, and after a volcanic eruption to stay safe from ash and lava flows.</p>
+                    <button class="btn">Know More</button>
+                </div>
+                <div class="card" onclick="openModal('heatwaveModal')">
+                    <img src="https://www.canadiansecuritymag.com/wp-content/uploads/2022/04/Extreme_heat_low.jpg" alt="Heatwave">
+                    <h2>Extreme Heat</h2>
+                    <p>Find out how to stay safe during extreme heat events and protect yourself from heat-related illnesses.</p>
+                    <button class="btn">Know More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modals -->
+        <div id="earthquakeModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('earthquakeModal')">&times;</span>
+                <h2>Earthquakes</h2>
+                <p>Here you can include detailed information about earthquakes. This could include guidelines, safety tips, and response actions.</p>
+                <p><strong>Dos:</strong></p>
+                <ul>
+                    <li>Do stay indoors during shaking.</li>
+                    <li>Do use a sturdy table or desk as cover.</li>
+                    <li>Do listen to emergency broadcasts for updates.</li>
+                </ul>
+                <p><strong>Don'ts:</strong></p>
+                <ul>
+                    <li>Don’t run outside during shaking.</li>
+                    <li>Don’t use elevators as they may become inoperative.</li>
+                    <li>Don’t move injured individuals unless they are in immediate danger.</li>
+                </ul>
+                <!-- Button to open video link -->
+                <a href="https://www.youtube.com/watch?v=E5wLV3Hl1Xc&t=131s" target="_blank" class="video-button">Watch Safety Video</a>
+            </div>
+        </div>
+
+        <div id="floodModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('floodModal')">&times;</span>
+                <h2>Floods</h2>
+                <p>Here you can include detailed information about floods. This could include guidelines, safety tips, and response actions.</p>
+                <p><strong>Dos:</strong></p>
+                <ul>
+                    <li>Do listen to weather warnings and alerts.</li>
+                    <li>Do keep informed about evacuation routes and shelters.</li>
+                    <li>Do use clean, safe water for drinking and cooking.</li>
+                </ul>
+                <p><strong>Don'ts:</strong></p>
+                <ul>
+                    <li>Don’t drive through flooded areas.</li>
+                    <li>Don’t use electrical appliances if wet.</li>
+                    <li>Don’t ignore evacuation orders from authorities.</li>
+                </ul>
+                <!-- Button to open video link -->
+                <a href="https://www.youtube.com/watch?v=lb5bQDlCvtU" target="_blank" class="video-button">Watch Safety Video</a>
+            </div>
+        </div>
+
+        <div id="hurricaneModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('hurricaneModal')">&times;</span>
+                <h2>Hurricanes</h2>
+                <p>Here you can include detailed information about hurricanes. This could include guidelines, safety tips, and response actions.</p>
+                <p><strong>Dos:</strong></p>
+                <ul>
+                    <li>Do stay updated on weather forecasts and evacuation notices.</li>
+                    <li>Do follow evacuation orders promptly.</li>
+                    <li>Do avoid walking or driving through floodwater.</li>
+                </ul>
+                <p><strong>Don'ts:</strong></p>
+                <ul>
+                    <li>Don’t go outside during strong winds or heavy rain.</li>
+                    <li>Don’t use candles during power outages; use flashlights instead.</li>
+                    <li>Don’t ignore official warnings or instructions.</li>
+                </ul>
+                <!-- Button to open video link -->
+                <a href="https://www.youtube.com/watch?v=H-nxT76l9Jc" target="_blank" class="video-button">Watch Safety Video</a>
+            </div>
+        </div>
+
+        <div id="tornadoModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('tornadoModal')">&times;</span>
+                <h2>Tornadoes</h2>
+                <p>Here you can include detailed information about tornadoes. This could include guidelines, safety tips, and response actions.</p>
+                <p><strong>Dos:</strong></p>
+                <ul>
+                    <li>Do take shelter in a small, windowless interior room or basement.</li>
+                    <li>Do listen to weather alerts and follow safety advice.</li>
+                    <li>Do check for injuries and provide first aid if necessary.</li>
+                </ul>
+                <p><strong>Don'ts:</strong></p>
+                <ul>
+                    <li>Don’t seek shelter under a bridge or overpass.</li>
+                    <li>Don’t leave your shelter until the danger has passed.</li>
+                    <li>Don’t use elevators if your building has been damaged.</li>
+                </ul>
+                <!-- Button to open video link -->
+                <a href="https://www.youtube.com/watch?v=_6ri7oZ6-k4" target="_blank" class="video-button">Watch Safety Video</a>
+            </div>
+            
+        </div>
+        <div id="wildfireModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('wildfireModal')">&times;</span>
+                <h2>Wildfires</h2>
+                <p>Here you can include detailed information about wildfires. This could include guidelines, safety tips, and response actions.</p>
+                <p><strong>Dos:</strong></p>
+                <ul>
+                    <li>Do create a defensible space around your property.</li>
+                    <li>Do follow evacuation orders promptly.</li>
+                    <li>Do have an emergency kit ready with essentials.</li>
+                </ul>
+                <p><strong>Don'ts:</strong></p>
+                <ul>
+                    <li>Don’t use outdoor grills or open flames.</li>
+                    <li>Don’t delay evacuating if ordered to do so.</li>
+                    <li>Don’t try to fight the fire on your own.</li>
+                </ul>
+                <!-- Button to open video link -->
+                <a href="https://www.youtube.com/watch?v=84D0OpGHK5Y" target="_blank" class="video-button">Watch Safety Video</a>
+            </div>
+            
+        </div>
+
+        <div id="tsunamiModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('tsunamiModal')">&times;</span>
+                <h2>Tsunamis</h2>
+                <p>Here you can include detailed information about tsunamis. This could include guidelines, safety tips, and response actions.</p>
+                <p><strong>Dos:</strong></p>
+                <ul>
+                    <li>Do move to higher ground immediately.</li>
+                    <li>Do listen to official warnings and follow evacuation orders.</li>
+                    <li>Do avoid walking or driving through floodwater.</li>
+                </ul>
+                <p><strong>Don'ts:</strong></p>
+                <ul>
+                    <li>Don’t wait to feel the wave; move to higher ground as soon as you hear the warning.</li>
+                    <li>Don’t return to the area until officials declare it safe.</li>
+                    <li>Don’t stay in low-lying areas near the coast.</li>
+                </ul>
+                <!-- Button to open video link -->
+                <a href="https://www.youtube.com/watch?v=qrIVYn-OfBs" target="_blank" class="video-button">Watch Safety Video</a>
+            </div>
+        </div>
+
+        <div id="volcanoModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('volcanoModal')">&times;</span>
+                <h2>Volcanic Eruptions</h2>
+                <p>Here you can include detailed information about volcanic eruptions. This could include guidelines, safety tips, and response actions.</p>
+                <p><strong>Dos:</strong></p>
+                <ul>
+                    <li>Do follow evacuation orders and seek shelter indoors.</li>
+                    <li>Do protect yourself from ash fall by covering your mouth and nose.</li>
+                    <li>Do stay indoors and keep windows closed to prevent ash from entering your home.</li>
+                </ul>
+                <p><strong>Don'ts:</strong></p>
+                <ul>
+                    <li>Don’t drive unless absolutely necessary as ash can cause poor visibility.</li>
+                    <li>Don’t use contact lenses during ash fall.</li>
+                    <li>Don’t return to the area until authorities declare it safe.</li>
+                </ul>
+                <!-- Button to open video link -->
+                <a href="https://www.youtube.com/watch?v=_6ri7oZ6-k4" target="_blank" class="video-button">Watch Safety Video</a>
+            </div>
+        </div>
+
+        <div id="heatwaveModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('heatwaveModal')">&times;</span>
+                <h2>Extreme Heat</h2>
+                <p>Here you can include detailed information about extreme heat. This could include guidelines, safety tips, and response actions.</p>
+                <p><strong>Dos:</strong></p>
+                <ul>
+                    <li>Do stay hydrated and drink plenty of water.</li>
+                    <li>Do stay indoors during peak heat hours.</li>
+                    <li>Do use fans or air conditioning to stay cool.</li>
+                </ul>
+                <p><strong>Don'ts:</strong></p>
+                <ul>
+                    <li>Don’t leave children or pets in hot vehicles.</li>
+                    <li>Don’t overexert yourself during extreme heat.</li>
+                    <li>Don’t ignore symptoms of heat-related illnesses.</li>
+                </ul>
+                <!-- Button to open video link -->
+                <a href="https://www.youtube.com/watch?v=3bhrNBl1D90" target="_blank" class="video-button">Watch Safety Video</a>
+            </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Disaster Manager. All rights reserved.</p>
+    </footer>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

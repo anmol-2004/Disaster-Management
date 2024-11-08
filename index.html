@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Manager</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        .icon-earthquake {
+            background-color: red;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification Bar -->
+    <div class="notification-bar scroll-right">
+        <span>New Articles</span>
+        <marquee behavior="" direction="left">Saving Lives & Beyond “आपदा सेवा सदैव सर्वत्र”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NDRF Helpline Number : +91-9711077372&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Saving Lives & Beyond “आपदा सेवा सदैव सर्वत्र”</marquee>
+     </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Disaster Manager</h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search for disasters...">
+                <div class="date">
+                    <label for="from-date">From:</label>
+                    <input type="date" id="from-date">
+                    <label for="to-date">To:</label>
+                    <input type="date" id="to-date">
+                </div>
+                <button id="search-button">Search</button>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/guidelines.html">Guidelines</a></li>
+                    <li><a href="/feedback.html">Feedback</a></li>
+                    <li><a href="/login.html" id="authLink" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Map -->
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script>
+        var map = L.map('map').setView([20.5937, 78.9629], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Fetch disaster data
+        // USGS Earthquake API URL for past 30 days
+        // var apiUrl = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-08-01&endtime=2023-08-31&minlatitude=6.4626&maxlatitude=37.0841&minlongitude=68.1766&maxlongitude=97.4028';
+
+        // Fetch earthquake data
+        function fetchDisasterData(apiUrl, heatOptions, iconOptions, addMarkers) {
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Check the data structure
+
+                var heatData = [];
+                data.features.forEach(feature => {
+                    var coords = feature.geometry.coordinates;
+                    var magnitude = feature.properties.mag;
+                    if (coords && magnitude) {
+                        // Push the coordinates and magnitude as a point in the heatmap
+                        heatData.push([coords[1], coords[0], magnitude]);
+                    }
+                });
+
+                // Create the heatmap layer
+                L.heatLayer(heatData, {radius: 25, blur: 15, maxZoom: 10}).addTo(map);
+            })
+            .catch(error => console.error('Error fetching data:', error))
+        };
+        // function fetchDisasterData(apiUrl, heatOptions, iconOptions, addMarkers) {
+        //     fetch(apiUrl)
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log(data); // Check the data structure
+
+        //             var heatData = [];
+        //             var markers = [];
+
+        //             data.features.forEach(feature => {
+        //                 var coords = feature.geometry.coordinates;
+        //                 var magnitude = feature.properties.magnitude || feature.properties.intensity || feature.properties.severity; // Adjust based on actual data
+        //                 if (coords && magnitude) {
+        //                     // Push the coordinates and magnitude as a point in the heatmap
+        //                     heatData.push([coords[1], coords[0], magnitude]);
+
+        //                     if (addMarkers) {
+        //                         // Create a marker with a custom icon
+        //                         var marker = L.marker([coords[1], coords[0]], {
+        //                             icon: L.divIcon({
+        //                                 className: 'icon-earthquake',
+        //                                 html: '<div>' + Math.round(magnitude) + '</div>'
+        //                             })
+        //                         }).addTo(map);
+        //                         markers.push(marker);
+        //                     }
+        //                 }
+        //             });
+
+        //             // Create and add the heatmap layer
+        //             L.heatLayer(heatData, heatOptions).addTo(map);
+        //         })
+        //         .catch(error => console.error('Error fetching data:', error));
+        // }
+
+        // Example API URLs (Replace with actual API endpoints)
+        var earthquakeApiUrl = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-08-01&endtime=2023-08-31&minlatitude=6.4626&maxlatitude=37.0841&minlongitude=68.1766&maxlongitude=97.4028';
+        var cycloneApiUrl = 'https://www.gdacs.org/reports/ics/2019/cyclone/1801/cyclone.geojson'; // Replace with actual cyclone data API
+        var tornadoApiUrl = 'https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=STORM_EVENTS&startdate=2023-08-01&enddate=2023-08-31&datatypeid=TORNADO&limit=1000'; // Replace with actual tornado data API
+        var floodApiUrl = 'https://waterservices.usgs.gov/nwis/iv/?format=json&sites=05323000,05324400&value=stage&units=metric'; // Replace with actual flood data API
+
+        // Heatmap options
+        var heatOptions = {
+            radius: 25,
+            blur: 15,
+            maxZoom: 10
+        };
+
+        // Fetch and visualize disaster data with icons for earthquakes
+        fetchDisasterData(earthquakeApiUrl, heatOptions, null, true);
+        fetchDisasterData(cycloneApiUrl, heatOptions, null, false);
+        fetchDisasterData(tornadoApiUrl, heatOptions, null, false);
+        fetchDisasterData(floodApiUrl, heatOptions, null, false);
+
+    </script>
+    <!-- Main Content -->
+    <main>
+        <section id="welcome">
+            <h2>Welcome to Disaster Manager</h2>
+            <p>Stay updated with the latest disaster news from around the world.</p>
+        </section>
+
+        <section id="news-cards">
+            <!-- News cards will be dynamically inserted here by JavaScript -->
+        </section>
+    </main>
+
+    <!-- Chat Bot Icon -->
+    <button class="chatbot-toggler">
+        <span class="material-symbols-outlined">mode_comment</span>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="chatbot">
+        <header>
+            <h2>Chatbot</h2>
+            <span class="material-symbols-outlined">close</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there <br> How can I help you today?</p>
+            </li>
+            
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Enter a message..." required></textarea>
+            <span id="send-btn" class="material-symbols-outlined">send</span>
+        </div>
+    </div>
+
+    <!-- Chat Bot Popup -->
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Disaster Manager. All rights reserved.</p>
+    </footer>
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+      </script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/chat.js" type="module"></script>
+    
+</body>
+</html>
